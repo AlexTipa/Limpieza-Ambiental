@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpieza Ambiental - Equipo 4</title>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: #f5fef7;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #2a6b3c;
+            padding: 1.2rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+        }
+
+        .navbar a:hover {
+            color: black;
+            transform: translateY(-2px);
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 7rem 1rem 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            max-width: 1000px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+        }
+
+        h1, h2 {
+            color: #1b5e20;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            margin-top: 1.5rem;
+        }
+
+        p, li {
+            line-height: 1.8;
+            color: #424242;
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .img-container {
+            width: 100%;
+            height: auto;
+            min-height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 2rem 0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        li::before {
+            content: '🌿';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2rem;
+        }
+
+        #hero {
+            background: linear-gradient(rgba(42, 107, 60, 0.7), rgba(42, 107, 60, 0.7)),
+                        url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            filter: blur(3px);
+            z-index: 0;
+        }
+
+        #hero .card {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .navbar {
+                padding: 0.8rem;
+                gap: 0.5rem;
+            }
+
+            .navbar a {
+                font-size: 0.9rem;
+                padding: 0.3rem 0.7rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .img-container {
+                min-height: 200px;
+                margin: 1rem 0;
+            }
+
+            section {
+                padding: 5rem 1rem 2rem;
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            p, li {
+                font-size: 1rem;
+            }
+
+            li {
+                padding-left: 1.5rem;
+            }
+
+            .img-container {
+                min-height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#hero">Inicio</a>
+        <a href="#que-es">¿Qué es?</a>
+        <a href="#importancia">Importancia</a>
+        <a href="#problemas">Problemas</a>
+        <a href="#consecuencias">Consecuencias</a>
+        <a href="#soluciones">Soluciones</a>
+    </nav>
+
+    <section id="hero">
+        <div class="card">
+            <h1>Limpieza Ambiental</h1>
+            <p>Equipo 4 - Cuidando nuestro planeta</p>
+        </div>
+    </section>
+
+    <section id="que-es">
+        <div class="card">
+            <h2>¿Qué es la Limpieza Ambiental?</h2>
+            <div class="img-container">
+                <img src="https://www.gaceta.unam.mx/wp-content/uploads/2019/06/arboles.jpg" alt="Limpieza ecológica">
+            </div>
+            <p>La limpieza ambiental consiste en una serie de hábitos y acciones
+                destinadas a eliminar la suciedad de un espacio determinado, como
+                hogares, oficinas o fábricas. Por otro lado, la higiene ambiental abarca un
+                conjunto de prácticas enfocadas en mejorar las condiciones de un lugar, no
+                solo eliminando la suciedad, sino también creando un entorno más
+                saludable y adecuado para la vida. En este contexto, la limpieza ecológica se
+                distingue por priorizar el cuidado del medio ambiente y la salud humana.</p>
+        </div>
+    </section>
+
+    <section id="importancia">
+        <div class="card">
+            <h2>Importancia</h2>
+            <div class="img-container">
+                <img src="https://simiplaneta.com/assets/images/articulos/10-beneficios-ambientales-de-plantar-un-arbol.jpg" alt="Entorno natural limpio">
+            </div>
+            <p>La limpieza ambiental es fundamental porque nos ayuda a
+                mantener un entorno saludable y agradable para vivir. Al eliminar
+                la suciedad, los desechos y los contaminantes, reducimos el
+                riesgo de enfermedades, mejoramos la calidad del aire y del agua,
+                y protegemos la naturaleza.</p>
+        </div>
+    </section>
+
+    <section id="problemas">
+        <div class="card">
+            <h2>Problemas en Espacios Públicos</h2>
+            <div class="img-container">
+                <img src="https://f.rpp-noticias.io/2018/11/16/basurainforme-711967mp4_711968.png" alt="Parque contaminado">
+            </div>
+            <p>La contaminación en espacios públicos y
+                parques es un problema común que afecta el
+                medio ambiente y la calidad de vida. Entre sus
+                principales causas están la acumulación de
+                residuos sólidos como plásticos, vidrios y colillas
+                de cigarro, la falta de cultura ambiental que lleva
+                a las personas a tirar basura en la calle, y la
+                contaminación del agua y el suelo debido a
+                desechos en ríos, lagos y áreas verdes. Para
+                reducir estos problemas, es fundamental
+                fomentar la educación ambiental y promover el
+                correcto manejo de los residuos.</p>
+        </div>
+    </section>
+
+    <section id="consecuencias">
+        <div class="card">
+            <h2>Consecuencias</h2>
+            <div class="img-container">
+                <img src="https://cdn.forbes.com.mx/2020/03/personascubrebocas.jpg" alt="Contaminación ambiental">
+            </div>
+            <p>La contaminación no solo tiene efectos devastadores sobre la
+                salud y el medio ambiente, sino que también tiene un impacto
+                visual, afectando la calidad de vida y el desarrollo de las
+                comunidades.</p>
+            <ul>
+                <li><strong>Salud:</strong> La basura y el agua contaminada pueden causar enfermedades,
+                    como infecciones y problemas digestivos.</li>
+                <li><strong>Medio ambiente:</strong> La contaminación daña las plantas, los animales y los
+                    ecosistemas, afectando la naturaleza y el equilibrio de los hábitats.</li>
+                <li><strong>Impacto visual y económico:</strong> Los lugares sucios son menos atractivos
+                    para los turistas, lo que reduce el turismo.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="soluciones">
+        <div class="card">
+            <h2>Soluciones y Buenas Prácticas</h2>
+            <div class="img-container">
+                <img src="https://reciclamas.com.mx/wp-content/uploads/2023/10/8-1-1.jpg" alt="Reciclaje">
+            </div>
+            <ul>
+                <li>Colocar basura en su lugar y separar residuos parareciclaje.</li>
+                <li>Participar en brigadas de limpieza.</li>
+                <li>Reducir el uso de plásticos de un solo uso.</li>
+                <li>Promover la educación ambiental en la comunidad.</li>
+            
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>¡Pequeñas acciones generan grandes cambios! 🌎 Cuida tu entorno</p>
+    </footer>
+
+    <script>
+        // Animación de aparición al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Efecto hover en imágenes
+        document.querySelectorAll('.img-container').forEach(container => {
+            container.addEventListener('mouseover', () => {
+                container.querySelector('img').style.transform = 'scale(1.05)';
+            });
+            container.addEventListener('mouseout', () => {
+                container.querySelector('img').style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
